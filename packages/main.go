@@ -60,6 +60,14 @@ var (
 
 // autoformat is SICK
 
+func needInt(x int) int           { return x*10 + 1 }
+func needFloat(x float64) float64 { return x * 0.1 }
+
+const (
+	Big   = 1 << 100
+	Small = Big >> 99
+)
+
 func main() {
 	// package level
 	fmt.Println("My favorite number is", rand.Intn(10))
@@ -112,4 +120,43 @@ func main() {
 	var b bool
 	var s string
 	fmt.Printf("%v %v %v %v", t, f, b, s)
+
+	// in Go, assignment between items of different type requires an explicit conversion
+	i := 42
+	f_1 := float64(i)
+	u := uint(f_1) // need conversion function
+	// var u uint = f_1 // won't work, need explicit conversion
+	fmt.Println()
+	fmt.Printf("i %v, %T; f %v, %T; u %v, %T", i, i, f_1, f_1, u, u)
+
+	// type inference
+	// when the right hand side of the declaration is typed, the new variable is of that same type
+
+	var i_1 int
+	j_1 := i_1 // j_1 is an int...
+
+	fmt.Println("i:", i_1, "j:", j_1)
+
+	// inference happens based on the precision of the constant:
+	i_2 := 42        // int
+	f_2 := 3.142     // float64
+	g := 0.867 + .5i // complex128
+
+	fmt.Println()
+	fmt.Printf("i %v, %T; f %v, %T; g %v, %T", i_2, i_2, f_2, f_2, g, g)
+
+	// constants
+	// declared like variables but with const keyword
+	// can be char, string, boolean, or numeric
+	// CANNOT be declared using := syntax
+	const blob = "YER.pdf"
+	fmt.Println()
+	fmt.Println(blob)
+
+	// numeric constants are high precision values
+	// an untyped constant takes the type needed by it's context
+	fmt.Println(needInt(Small))
+	fmt.Println(needInt(Big))
+	fmt.Println(needFloat(Small))
+	fmt.Println(needFloat(Big))
 }
