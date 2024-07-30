@@ -156,7 +156,7 @@ func main() {
 	// numeric constants are high precision values
 	// an untyped constant takes the type needed by it's context
 	fmt.Println(needInt(Small))
-	fmt.Println(needInt(Big))
+	// fmt.Println(needInt(Big)) // overflows...
 	fmt.Println(needFloat(Small))
 	fmt.Println(needFloat(Big))
 }
