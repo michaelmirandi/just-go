@@ -121,4 +121,4 @@ const Small = Big >> 99
 
 - Exports begin with a capital letter.
 - `:=` can be used to unpack multiple values from a function.
-- Autoformat in Go is very effective ("SICK" as per the comment).
+- Autoformat in Go is SICK.
