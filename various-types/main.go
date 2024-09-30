@@ -78,4 +78,80 @@ func main() {
 
 	// z is a pointer to a struct value
 	fmt.Println(v1, z, v2, v3)
+
+	/// b1
+
+	// [n]T is an array of n values of type T
+	// arrays are of fixed sizes
+	var a [2]string
+	a[0] = "Hello"
+	a[1] = "World"
+	fmt.Println(a[0], a[1])
+	fmt.Println(a)
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+
+	// a slice is a dynamically sized- flexible view into the elements of an array
+	// needs a low & high bound, separated by a colon
+	var s []int = primes[1:4]
+	fmt.Println(s)
+
+	// a slice doesn't store any data.. just describes
+	// if you change the value of a slice, it changes the underlying array
+	names := [4]string{
+		"John",
+		"Paul",
+		"George",
+		"Ringo",
+	}
+
+	fmt.Println(names)
+
+	first_part := names[0:2]
+	second_part := names[1:3]
+
+	fmt.Println(first_part, second_part)
+
+	second_part[0] = "XXX"
+
+	fmt.Println(first_part, second_part)
+	fmt.Println(names)
+
+	// a slice literal is alike an array literal without the length
+	// creates an array, then a slice that references it...
+	q := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(q)
+
+	r := []bool{true, false, true, true, false, true}
+	fmt.Println(r)
+
+	array_of_structs := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+
+	fmt.Println(array_of_structs)
+
+	// slice defaults
+	// you can omit the high / low bounds to use the defaults instead
+	// default is 0 for low & the lenght of the slice for the high
+
+	temp_s := []int{2, 3, 5, 7, 11, 13}
+	temp_s = s[1:4]
+	fmt.Println(temp_s)
+
+	temp_s = s[:2]
+	fmt.Println(temp_s)
+
+	temp_s = s[1:]
+	fmt.Println(temp_s)
+
 }
